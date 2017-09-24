@@ -166,6 +166,10 @@ class SourcesTree extends Component {
   }
 
   getIcon(item, depth) {
+    if (item.path === "/webpack://") {
+      return <Svg name="webpack" />;
+    }
+
     if (depth === 0) {
       return <Svg name="domain" />;
     }
@@ -237,11 +241,9 @@ class SourcesTree extends Component {
         }}
         onContextMenu={e => this.onContextMenu(e, item)}
       >
-        <div>
-          {arrow}
-          {icon}
-          {item.name}
-        </div>
+        {arrow}
+        {icon}
+        <span className="label"> {item.name} </span>
       </div>
     );
   }

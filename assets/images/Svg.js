@@ -51,12 +51,13 @@ const svg = {
   pug: require("./pug.svg"),
   extjs: require("./sencha-extjs.svg"),
   showSources: require("./showSources.svg"),
-  showOutline: require("./showOutline.svg")
+  showOutline: require("./showOutline.svg"),
+  shortcut: require("./shortcut.svg")
 };
 
 type SvgType = {
   name: string,
-  clasName?: string,
+  className?: string,
   onClick?: () => void,
   "aria-label"?: string
 };
@@ -76,12 +77,14 @@ function Svg({ name, className, onClick, "aria-label": ariaLabel }) {
   if (name === "subSettings") {
     className = "";
   }
+
   const props = {
     className,
     onClick,
     ["aria-label"]: ariaLabel,
     src: svg[name]
   };
+
   return <InlineSVG {...props} />;
 }
 
